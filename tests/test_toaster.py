@@ -88,7 +88,7 @@ def test_pyagent_attr_toasters(thread_count):
     assert (info['enter_time'] ==  0)
     assert (info['lifetime'] ==  -1)
     assert (info['exit_time'] ==  -1)
-    assert (len(info['childern']) ==  0)
+    assert (len(info['children']) ==  0)
     assert(len(info['annotations']) > 0)
     # clean up
     if os.path.exists(iname):
@@ -144,7 +144,7 @@ def test_pyagent_attr_toaster_company(thread_count):
     assert (info['enter_time'] ==  0)
     assert (info['lifetime'] ==  -1)
     assert (info['exit_time'] ==  -1)
-    assert (len(info['childern']) ==  1)
+    assert (len(info['children']) ==  1)
     assert(len(info['annotations']) > 0)
     # clean up
     if os.path.exists(iname):
@@ -200,7 +200,7 @@ def test_pyagent_attr_toaster_region(thread_count):
     assert (info['enter_time'] ==  0)
     assert (info['lifetime'] ==  -1)
     assert (info['exit_time'] ==  -1)
-    assert (len(info['childern']) ==  1)
+    assert (len(info['children']) ==  1)
     assert(len(info['annotations']) > 0)
     # clean up
     if os.path.exists(iname):

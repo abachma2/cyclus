@@ -33,7 +33,7 @@ class AttrTick(object):
             'enter_time': self.enter_time,
             'lifetime': self.lifetime,
             'exit_time': self.exit_time,
-            'childern': [kid.id for kid in self.children],
+            'children': [kid.id for kid in self.children],
             'annotations': str(self.annotations),
             }
         s = json.dumps(info)
