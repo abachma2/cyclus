@@ -44,7 +44,11 @@ class ResourceTest : public ::testing::Test {
     mmax = Material::Create(dummy, mmax_qty, c);
     // overflow limit
     pmax = Product::Create(dummy, cyclus::CY_LARGE_DOUBLE, "bananas");
-    
+    m1 = Material::Create(dummy, 3, c);
+    m2 = Material::Create(dummy, 7, c);
+    p1 = Product::Create(dummy, 3, "bananas");
+    p2 = Product::Create(dummy, 7, "bananas");
+
   //  cyclus::PackagedMaterial::matstream ms;
   //  cyclus::PackagedMaterial::package pk;
   //  ms.push_back(m1);
