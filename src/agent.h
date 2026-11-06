@@ -32,6 +32,7 @@ class Ider {
 
 class Material;
 class Product;
+class PackagedMaterial; 
 
 /// map<inventory_name, vector<resources_in_inventory> >.  Used by agents in
 /// their #SnapshotInv and #InitInv functions for saving+loading their internal
@@ -327,6 +328,9 @@ class Agent : public StateWrangler, virtual public Ider, public EconomicEntity {
 
   /// default implementation for material preferences.
   virtual void AdjustProductPrefs(PrefMap<Product>::type& prefs) {}
+
+  /// default implementation for packagedmaterial preferences.
+  virtual void AdjustPackagedMatlPrefs(PrefMap<PackagedMaterial>::type& prefs) {}
 
   /// Returns an agent's xml rng schema for initializing from input files. All
   /// concrete agents should override this function. This must validate the same

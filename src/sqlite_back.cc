@@ -488,6 +488,68 @@ boost::spirit::hold_any SqliteBack::ColAsVal(SqlStatement::Ptr stmt,
       throw ValueError("Attempted to retrieve unsupported backend type");
     }
   }
+<<<<<<< HEAD
+=======
+  CYCLUS_LOADVAL(SET_INT, std::set<int>);
+  CYCLUS_LOADVAL(SET_STRING, std::set<std::string>);
+  CYCLUS_LOADVAL(LIST_INT, std::list<int>);
+  CYCLUS_LOADVAL(LIST_STRING, std::list<std::string>);
+  CYCLUS_LOADVAL(VECTOR_INT, std::vector<int>);
+  CYCLUS_LOADVAL(VECTOR_DOUBLE, std::vector<double>);
+  CYCLUS_LOADVAL(VECTOR_STRING, std::vector<std::string>);
+  CYCLUS_LOADVAL(MAP_INT_DOUBLE, std::map<int CYCLUS_COMMA double>);
+  CYCLUS_LOADVAL(MAP_INT_INT, std::map<int CYCLUS_COMMA int>);
+  CYCLUS_LOADVAL(MAP_INT_STRING, std::map<int CYCLUS_COMMA std::string>);
+  CYCLUS_LOADVAL(MAP_STRING_DOUBLE, std::map<std::string CYCLUS_COMMA double>);
+  CYCLUS_LOADVAL(MAP_STRING_INT, std::map<std::string CYCLUS_COMMA int>);
+  CYCLUS_LOADVAL(MAP_STRING_STRING,
+                 std::map<std::string CYCLUS_COMMA std::string>);
+  CYCLUS_LOADVAL(MAP_STRING_VECTOR_DOUBLE,
+                 std::map<std::string CYCLUS_COMMA std::vector<double> >);
+  CYCLUS_LOADVAL(
+      MAP_STRING_MAP_INT_DOUBLE,
+      std::map<std::string CYCLUS_COMMA std::map<int CYCLUS_COMMA double> >);
+  CYCLUS_LOADVAL(MAP_STRING_PAIR_DOUBLE_MAP_INT_DOUBLE,
+                 std::map<std::string CYCLUS_COMMA std::pair<
+                     double CYCLUS_COMMA std::map<int CYCLUS_COMMA double> > >);
+  CYCLUS_LOADVAL(MAP_INT_MAP_STRING_DOUBLE,
+                 std::map<int CYCLUS_COMMA
+                          std::map<std::string CYCLUS_COMMA double> >);
+  CYCLUS_LOADVAL(
+      MAP_STRING_VECTOR_PAIR_INT_PAIR_STRING_STRING,
+      std::map<std::string CYCLUS_COMMA
+      std::vector<std::pair<int CYCLUS_COMMA
+      std::pair<std::string CYCLUS_COMMA std::string> > > >);
+
+  CYCLUS_LOADVAL(
+      MAP_STRING_PAIR_STRING_VECTOR_DOUBLE,
+      std::map<std::string CYCLUS_COMMA
+      std::pair<std::string CYCLUS_COMMA std::vector<double> > > );
+
+  CYCLUS_LOADVAL(LIST_PAIR_INT_INT, std::list< std::pair<int CYCLUS_COMMA int> >);
+
+  CYCLUS_LOADVAL(
+      MAP_STRING_MAP_STRING_INT,
+      std::map<std::string CYCLUS_COMMA std::map<std::string CYCLUS_COMMA int> >);
+
+  CYCLUS_LOADVAL(
+      VECTOR_PAIR_PAIR_DOUBLE_DOUBLE_MAP_STRING_DOUBLE,
+      std::vector<std::pair<
+              std::pair<double CYCLUS_COMMA double> CYCLUS_COMMA
+                  std::map<std::string CYCLUS_COMMA double> > > );
+
+  CYCLUS_LOADVAL(
+      MAP_PAIR_STRING_STRING_INT,
+      std::map<std::pair<std::string CYCLUS_COMMA std::string> CYCLUS_COMMA int > );
+
+  CYCLUS_LOADVAL(
+      MAP_STRING_MAP_STRING_DOUBLE,
+      std::map<std::string CYCLUS_COMMA std::map<std::string CYCLUS_COMMA double> >);
+
+  default: {
+    throw ValueError("Attempted to retrieve unsupported backend type");
+  }}
+>>>>>>> gwen/packaged-material
 
 #undef CYCLUS_LOADVAL
 #undef CYCLUS_COMMA
@@ -576,7 +638,11 @@ DbTypes SqliteBack::Type(boost::spirit::hold_any v) {
     type_map[&typeid(std::map<std::pair<std::string, std::string>, int>)] =
         MAP_PAIR_STRING_STRING_INT;
 
+<<<<<<< HEAD
     type_map[&typeid(std::map<std::string, std::map<std::string, double>>)] =
+=======
+    type_map[&typeid(std::map<std::string, std::map<std::string,double> >)] =
+>>>>>>> gwen/packaged-material
         MAP_STRING_MAP_STRING_DOUBLE;
   }
 

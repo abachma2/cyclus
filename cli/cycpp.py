@@ -102,6 +102,7 @@ BUFFERS = {'{0}::toolkit::ResBuf'.format(CYCNS),
            ('{0}::toolkit::ResBuf'.format(CYCNS), CYCNS + '::Resource'),
            ('{0}::toolkit::ResBuf'.format(CYCNS), CYCNS + '::Product'),
            ('{0}::toolkit::ResBuf'.format(CYCNS), CYCNS + '::Material'),
+           ('{0}::toolkit::ResBuf'.format(CYCNS), CYCNS + '::PackagedMaterial'),
            '{0}::toolkit::ResMap'.format(CYCNS),
            '{0}::toolkit::TotalInvTracker'.format(CYCNS),
            ('{0}::toolkit::TotalInvTracker'.format(CYCNS), '{0}::toolkit::ResBuf'.format(CYCNS), CYCNS + '::Material'),
@@ -764,6 +765,7 @@ class StateAccumulator(object):
     supported_types |= BUFFERS
     supported_types |= {CYCNS+'::Resource',
                         CYCNS+'::Material',
+                        CYCNS+'::PackagedMaterial',
                         CYCNS+'::Product',}
     known_templates = {
         'std::vector': ('T',),

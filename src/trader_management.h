@@ -5,6 +5,7 @@
 #include "exchange_context.h"
 #include "product.h"
 #include "material.h"
+#include "packagedmaterial.h"
 #include "trader.h"
 
 namespace cyclus {
@@ -28,10 +29,22 @@ inline std::set<RequestPortfolio<Product>::Ptr> QueryRequests<Product>(
   return t->GetProductRequests();
 }
 
+template<>
+inline std::set<RequestPortfolio<PackagedMaterial>::Ptr>
+    QueryRequests<PackagedMaterial>(Trader* t) {
+  return t->GetPackagedMatlRequests();
+}
+
 template <class T>
 inline static std::set<typename BidPortfolio<T>::Ptr> QueryBids(
     Trader* t, typename CommodMap<T>::type& map) {
-  throw StateError("Non-specialized version of QueryBids not supported");
+      throw StateError("Non-specialized version of QueryBids not supported");
+}
+
+template<>
+inline std::set<RequestPortfolio<PackagedMaterial>::Ptr>
+    QueryRequests<PackagedMaterial>(Trader* t) {
+  return t->GetPackagedMatlRequests();
 }
 
 template <>
@@ -46,7 +59,17 @@ inline std::set<BidPortfolio<Product>::Ptr> QueryBids<Product>(
   return t->GetProductBids(map);
 }
 
+<<<<<<< HEAD
 template <class T>
+=======
+template<>
+inline std::set<BidPortfolio<PackagedMaterial>::Ptr>
+    QueryBids<PackagedMaterial>(Trader* t, CommodMap<PackagedMaterial>::type& map) {
+  return t->GetPackagedMatlBids(map);
+}
+
+template<class T>
+>>>>>>> gwen/packaged-material
 inline static void PopulateTradeResponses(
     Trader* trader,
     const std::vector<Trade<T>>& trades,
@@ -72,7 +95,19 @@ inline void PopulateTradeResponses<Product>(
   trader->GetProductTrades(trades, responses);
 }
 
+<<<<<<< HEAD
 template <class T>
+=======
+template<>
+inline void PopulateTradeResponses<PackagedMaterial>(
+    Trader* trader,
+    const std::vector< Trade<PackagedMaterial> >& trades,
+    std::vector<std::pair<Trade<PackagedMaterial>, PackagedMaterial::Ptr> >& responses) {
+  dynamic_cast<Trader*>(trader)->GetPackagedMatlTrades(trades, responses);
+}
+
+template<class T>
+>>>>>>> gwen/packaged-material
 inline static void AcceptTrades(
     Trader* trader,
     const std::vector<std::pair<Trade<T>, typename T::Ptr>>& responses) {
@@ -93,6 +128,14 @@ inline void AcceptTrades(
   trader->AcceptProductTrades(responses);
 }
 
+template<>
+inline void AcceptTrades(
+    Trader* trader,
+    const std::vector< std::pair<Trade<PackagedMaterial>, PackagedMaterial::Ptr> >& responses) {
+  dynamic_cast<Trader*>(trader)->AcceptPackagedMatlTrades(responses);
+}
+
 }  // namespace cyclus
 
 #endif  // CYCLUS_SRC_TRADER_MANAGEMENT_H_
+

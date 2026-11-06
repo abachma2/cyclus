@@ -7,11 +7,13 @@
 #include "product.h"
 #include "composition.h"
 #include "region.h"
+//#include "packagedmaterial.h"
 
 using cyclus::Material;
 using cyclus::Product;
 using cyclus::Resource;
 using cyclus::Package;
+//using cyclus::PackagedMaterial;
 
 class Dummy : public cyclus::Region {
  public:
@@ -42,6 +44,14 @@ class ResourceTest : public ::testing::Test {
     mmax = Material::Create(dummy, mmax_qty, c);
     // overflow limit
     pmax = Product::Create(dummy, cyclus::CY_LARGE_DOUBLE, "bananas");
+    
+  //  cyclus::PackagedMaterial::matstream ms;
+  //  cyclus::PackagedMaterial::package pk;
+  //  ms.push_back(m1);
+  //  ms.push_back(m2);
+
+    //pm1 = PackagedMaterial::Create(dummy, 3, pk);
+    //pm2 = PackagedMaterial::Create(dummy, 7, pk);
   }
 
   virtual void TearDown() {
@@ -56,6 +66,8 @@ class ResourceTest : public ::testing::Test {
   Material::Ptr m3;
   Material::Ptr mlimit;
   Material::Ptr mmax;
+  //PackagedMaterial::Ptr pm1;
+  //PackagedMaterial::Ptr pm2;
   Product::Ptr p1;
   Product::Ptr p2;
   Product::Ptr p3;
@@ -100,6 +112,35 @@ TEST_F(ResourceTest, MaterialUnitValue) {
   Material::Ptr lm2 = m1->ExtractQty(1);
   EXPECT_EQ(lm2->UnitValue(), 17);
 }
+
+/*
+TEST_F(ResourceTest, PackagedMaterialAbsorbTrackid) {
+  int obj_id = pm1->obj_id();
+  pm1->Absorb(pm2);
+  EXPECT_EQ(obj_id, pm1->obj_id());
+}
+
+TEST_F(ResourceTest, PackagedMaterialAbsorbGraphid) {
+  int state_id = pm1->state_id();
+  pm1->Absorb(pm2);
+  EXPECT_LT(state_id, pm1->state_id());
+}
+
+TEST_F(ResourceTest, PackagedMaterialExtractTrackid) {
+  int obj_id = pm1->obj_id();
+  PackagedMaterial::Ptr pm3 = pm1->Extract(2);
+  EXPECT_EQ(obj_id, pm1->obj_id());
+  EXPECT_LT(obj_id, pm3->obj_id());
+}
+
+TEST_F(ResourceTest, PackagedMaterialExtractGraphid) {
+  int state_id = pm1->state_id();
+  PackagedMaterial::Ptr pm3 = pm1->Extract(2);
+  EXPECT_LT(state_id, pm1->state_id());
+  EXPECT_LT(state_id, pm3->state_id());
+  EXPECT_NE(pm1->state_id(), pm3->state_id());
+}
+*/
 
 TEST_F(ResourceTest, ProductAbsorbTrackid) {
   int obj_id = p1->obj_id();

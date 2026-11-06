@@ -310,10 +310,11 @@ enum DbTypes {
   PAIR_PAIR_DOUBLE_DOUBLE_VL_MAP_STRING_DOUBLE,     // ["std::pair<std::pair<double, double>, std::map<std::string, double>>", 4, ["HDF5"], ["PAIR", ["PAIR", "DOUBLE", "DOUBLE"], ["VL_MAP", "STRING", "DOUBLE"]], false]
   PAIR_PAIR_DOUBLE_DOUBLE_VL_MAP_VL_STRING_DOUBLE,  // ["std::pair<std::pair<double, double>, std::map<std::string, double>>", 4, ["HDF5"], ["PAIR", ["PAIR", "DOUBLE", "DOUBLE"], ["VL_MAP", "VL_STRING", "DOUBLE"]], false]
 
-  // Resource Tools
+  // Resource 
   MATERIAL,  // ["cyclus::Material", 0, [], "MATERIAL", false]
   PRODUCT,  // ["cyclus::Product", 0, [], "PRODUCT", false]
   RES_BUF_MATERIAL,  // ["cyclus::toolkit::ResBuf<cyclus::Material>", 1, [], ["RES_BUF", "MATERIAL"], false]
+  RES_BUF_PACKAGED_MATERIAL,  // ["cyclus::toolkit::ResBuf<cyclus::Material>", 1, [], ["RES_BUF", "MATERIAL"], false]
   RES_BUF_PRODUCT,  // ["cyclus::toolkit::ResBuf<cyclus::Product>", 1, [], ["RES_BUF", "PRODUCT"], false]
   RES_MAP_INT_MATERIAL,  // ["cyclus::toolkit::ResMap<int, cyclus::Material>", 2, [], ["RES_MAP", "INT", "MATERIAL"], false]
   RES_MAP_INT_PRODUCT,  // ["cyclus::toolkit::ResMap<int, cyclus::Product>", 2, [], ["RES_MAP", "INT", "PRODUCT"], false]
